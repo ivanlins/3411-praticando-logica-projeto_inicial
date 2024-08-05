@@ -10,7 +10,11 @@ function sortear(){
         numero = obterNumeroRandom(numeroMinimo, numeroMaximo); //alocando os valores da função de numeros aleatorios
         numerosSorteados.push(numero); //alocando os valores obtidos na lista
     }
-    alert(numerosSorteados); //exibindo a lista de numeros sorteados
+    //alert(numerosSorteados); //exibindo a lista de numeros sorteados
+
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${numerosSorteados} </label>`; //exibindo a lista de numeros sorteados dentro do HTML
+
 }
 
 function obterNumeroRandom(min, max){ //obtendo números aleatorios
