@@ -19,8 +19,30 @@ function sortear(){
     let resultado = document.getElementById("resultado");
     resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${numerosSorteados} </label>`; //exibindo a lista de numeros sorteados dentro do HTML
 
+    alterarStatusFBotao();
 }
 
 function obterNumeroRandom(min, max){ //obtendo números aleatorios
     return Math.floor(Math.random() * (max - min + 1)) + min; //retornando os valores para os parametros
+}
+
+function alterarStatusFBotao(){
+    let botaoReiniciar = document.getElementById('btn-reiniciar');
+
+    if(botaoReiniciar.classList.contains('container__botao-desabilitado')){
+        botaoReiniciar.classList.remove('container__botao-desabilitado');
+        botaoReiniciar.classList.add('container__botao');
+    } else{
+        botaoReiniciar.classList.remove('container__botao');
+        botaoReiniciar.classList.add('container__botao-desabilitado');
+    }
+}
+
+function reiniciar(){
+    document.getElementById("quantidade").value = ''; //alterando o valor dentro do HTML para ''
+    document.getElementById("de").value = ''; //alterando o valor dentro do HTML para ''
+    document.getElementById("ate").value = ''; //alterando o valor dentro do HTML para ''
+    document.getElementById("resultado").innerHTML = '<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>';
+
+    alterarStatusFBotao();
 }
