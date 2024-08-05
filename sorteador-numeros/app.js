@@ -8,6 +8,10 @@ function sortear(){
 
     for ( let i = 0; i < quantidadeNumeros; i++){ //Faça isso X vezes, e depois pare
         numero = obterNumeroRandom(numeroMinimo, numeroMaximo); //alocando os valores da função de numeros aleatorios
+
+        while(numerosSorteados.includes(numero)){ //Laço de repetição para verificar se o resultado está se repetindo
+            numero = obterNumeroRandom(numeroMinimo, numeroMaximo);  //alocando os valores da função de numeros aleatorios novamente
+        }
         numerosSorteados.push(numero); //alocando os valores obtidos na lista
     }
     //alert(numerosSorteados); //exibindo a lista de numeros sorteados
