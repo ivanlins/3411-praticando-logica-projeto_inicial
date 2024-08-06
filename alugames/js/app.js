@@ -1,23 +1,24 @@
-// let jogosAlugados = [];
 
-function alterarStatus(jogo1) {
-    let monopoly = document.getElementById('game-1');
+function alterarStatus(id) {
+    let gameClicado = document.getElementById(`game-${id}`);
+    let imagem = gameClicado.querySelector('.dashboard__item__img');
+    let botao = gameClicado.querySelector('.dashboard__item__button');
+    let nomeJogo = gameClicado.querySelector('.dashboard__item__name');
 
+    if (botao.classList.contains('dashboard__item__button--return')){
 
+        imagem.classList.remove('dashboard__item__img--rented');
+        botao.classList.remove('dashboard__item__button--return');
+        botao.textContent = 'Alugar';
 
-    if (monopoly.classList.contains('dashboard__item__button')) {
-        monopoly.classList.remove('dashboard__item__button');
-        monopoly.classList.add('dashboard__item__button dashboard__item__button--return');
-    }   
-    
-    else if(monopoly.classList.contains('dashboard__item__button dashboard__item__button--return')){
-        monopoly.classList.remove('dashboard__item__button dashboard__item__button--return');
-        monopoly.classList.add('dashboard__item__button');
+        alert(`O jogo ${nomeJogo.textContent} foi devolvido.`);
+
     }
-
-    return jogo1;
-}
-
-// function alugar() {
-//     jogosAlugados.push(jogo)
-// }
+    else {   
+            imagem.classList.add('dashboard__item__img--rented');
+            botao.classList.add('dashboard__item__button--return');
+            botao.textContent = 'Devolver';
+            alert(`O jogo ${nomeJogo.textContent} foi alugado.`);
+    
+        }        
+    }
