@@ -12,6 +12,13 @@ function comprar(){
     let ingressoPista = "pista";
     let ingressoSuperior = 'superior';
     let ingressoInferior = 'inferior';
+
+    //Adicione uma verificação para garantir que a quantidade inserida pelo usuário seja um número positivo. Se o valor não for válido, exiba uma mensagem de erro adequada.
+    if(quantidadeSelecionada.value <= 0){
+        alert('não é possível comprar 0 ou menos');
+        return;
+    }
+    
     //se o ingresso selecionado for pista reduz o valor total da pista pelo valor da quantidade escolhida.
     //senao se o ingresso selecionado for cadeira superior reduz o valor total da cadeira superior pelo valor da quantidade escolhida.
     //senao reduz o valor total da cadeira inferior pelo valor da quantidade escolhida
