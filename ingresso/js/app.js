@@ -1,6 +1,5 @@
 function comprar(){
     // recebe e armazena qual valor será recebido select e a quantidade de itens
-
     let quantidadePista = 0;
     let quantidadeSuperior = 0;
     let quantidadeInferior = 0;
@@ -18,34 +17,31 @@ function comprar(){
     //senao reduz o valor total da cadeira inferior pelo valor da quantidade escolhida
     // reduz a quantidade total dos ingressos vigentes e altera no HTML
     if(ingressoSelecionado.value == ingressoPista){
+        if(quantidadeSelecionada > quantidadePista){
+            alert('quantidade indisponivel');
+            document.getElementById('qtd-pista').textContent = quantidadePista;
+            return;
+        }
         quantidadePista = quantidadePista - quantidadeSelecionada.value;
         console.log(quantidadePista);
         document.getElementById('qtd-pista').textContent = quantidadePista;
-        if(quantidadePista < 0){
+    }   else if(ingressoSelecionado.value == ingressoSuperior){
+        if(quantidadeSelecionada.value > quantidadeSuperior){
             alert('quantidade indisponivel');
-            document.getElementById('qtd-pista').textContent = 0;
-            quantidadePista = 0;
+            document.getElementById('qtd-superior').textContent = quantidadeSuperior;
             return;
         }
-    }   else if(ingressoSelecionado.value == ingressoSuperior){
         quantidadeSuperior = quantidadeSuperior - quantidadeSelecionada.value;
         console.log(quantidadeSuperior);
         document.getElementById('qtd-superior').textContent = quantidadeSuperior;
-        if(quantidadeSuperior < 0){
-            alert('quantidade indisponivel');
-            document.getElementById('qtd-superior').textContent = 0;
-            quantidadeSuperior = 0;
-            return;
-        }
     }
         else if(ingressoSelecionado.value == ingressoInferior){
+            if(quantidadeSelecionada.value > quantidadeInferior){
+                alert('quantidade indisponivel');
+                document.getElementById('qtd-inferior').textContent = quantidadeInferior;
+                return;}
         quantidadeInferior = quantidadeInferior - quantidadeSelecionada.value;
         console.log(quantidadeInferior);
         document.getElementById('qtd-inferior').textContent = quantidadeInferior;
-        if(quantidadeInferior < 0){
-            alert('quantidade indisponivel');
-            document.getElementById('qtd-inferior').textContent = 0;
-            quantidadeInferior = 0;
-        }
         }
 }
