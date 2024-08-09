@@ -24,13 +24,12 @@ function comprar(){
     //senao reduz o valor total da cadeira inferior pelo valor da quantidade escolhida
     // reduz a quantidade total dos ingressos vigentes e altera no HTML
     if(ingressoSelecionado.value == ingressoPista){
-        if(quantidadeSelecionada > quantidadePista){
+        if(quantidadeSelecionada.value > quantidadePista){
             alert('quantidade indisponivel');
             document.getElementById('qtd-pista').textContent = quantidadePista;
             return;
         }
         quantidadePista = quantidadePista - quantidadeSelecionada.value;
-        console.log(quantidadePista);
         document.getElementById('qtd-pista').textContent = quantidadePista;
     }   else if(ingressoSelecionado.value == ingressoSuperior){
         if(quantidadeSelecionada.value > quantidadeSuperior){
@@ -39,16 +38,15 @@ function comprar(){
             return;
         }
         quantidadeSuperior = quantidadeSuperior - quantidadeSelecionada.value;
-        console.log(quantidadeSuperior);
         document.getElementById('qtd-superior').textContent = quantidadeSuperior;
     }
         else if(ingressoSelecionado.value == ingressoInferior){
-            if(quantidadeSelecionada.value > quantidadeInferior){
-                alert('quantidade indisponivel');
-                document.getElementById('qtd-inferior').textContent = quantidadeInferior;
-                return;}
+        if(quantidadeSelecionada.value > quantidadeInferior){
+            alert('quantidade indisponivel');
+            document.getElementById('qtd-inferior').textContent = quantidadeInferior;
+            return;
+        }
         quantidadeInferior = quantidadeInferior - quantidadeSelecionada.value;
-        console.log(quantidadeInferior);
         document.getElementById('qtd-inferior').textContent = quantidadeInferior;
         }
 }
