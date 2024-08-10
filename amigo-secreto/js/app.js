@@ -1,5 +1,5 @@
 //recuperar nomes digitados e armazenar
-let nomesAdicionados = ['a', 'b', 'c', 'd'];
+let nomesAdicionados = [];
 // nomesAdicionados.join(', ');
 let nomesSorteados = document.getElementById('lista-sorteio');
 
@@ -26,10 +26,6 @@ function sortear() {
         }
         nomesSorteados.innerHTML = nomesSorteados.innerHTML + `<p id="lista-sorteio">${nomesAdicionados[i]}, tirou ${nomeFinal}</p>`
         console.log(listaSorteados);
-        // while(i < nomesAdicionados.length){
-        // if(nomesAdicionados[i] == listaSorteados[i]){
-        //     embaralha(listaSorteados)
-        // }
     }
     }
 
@@ -47,7 +43,7 @@ function embaralha(lista) {
 
 //reiniciar tudo quando o botão for clicado
 function reiniciar(){
-    // nomesAdicionados = [];
+    nomesAdicionados = [];
     listaSorteados = [...nomesAdicionados];
     nomeDigitado = '';
     document.getElementById('lista-amigos').textContent = ''
