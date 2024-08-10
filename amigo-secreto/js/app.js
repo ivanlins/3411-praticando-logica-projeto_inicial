@@ -1,5 +1,5 @@
 // Inicializa o array 'nomesAdicionados' com alguns nomes de exemplo
-let nomesAdicionados = ['a', 'b', 'c', 'd'];
+let nomesAdicionados = [];
 
 // Seleciona o elemento HTML onde os nomes sorteados serão exibidos
 let nomesSorteados = document.getElementById('lista-sorteio');
@@ -21,10 +21,16 @@ function adicionar() {
 
     // Limpa o campo de texto após adicionar o nome
     nomeDigitado.value = '';
+    atualizarLista();
 }
 
 // Função para sortear nomes aleatoriamente, garantindo que ninguém tire a si mesmo
 function sortear() {
+
+    if (nomesAdicionados.length < 2){
+        alert('O numero minimo para o sorteio é de: 2');
+        return
+    }
     // Cria uma cópia do array original 'nomesAdicionados' para 'listaSorteados'
     // Isso é feito para evitar alterações no array original
     let listaSorteados = [...nomesAdicionados]; 
@@ -91,3 +97,32 @@ function reiniciar() {
     // Limpa o conteúdo da lista de sorteio exibida na tela
     nomesSorteados.textContent = '';
 }
+
+// Função para atualizar a lista de amigos na tela
+function atualizarLista() {
+    let listaAmigos = document.getElementById('lista-amigos');
+    listaAmigos.innerHTML = '';
+
+    // Adiciona cada nome como um item clicável na lista
+    nomesAdicionados.forEach((nome, index) => {
+        let item = document.createElement('span');
+        item.textContent = nome;
+        item.style.cursor = 'pointer';
+        item.onclick = () => removerAmigo(index);
+        listaAmigos.appendChild(item);
+
+        // Adiciona uma vírgula entre os nomes, exceto após o último nome
+        if (index < nomesAdicionados.length - 1) {
+            listaAmigos.appendChild(document.createTextNode(', '));
+        }
+    });
+}
+
+// Função para remover um nome da lista
+function removerAmigo(index) {
+    nomesAdicionados.splice(index, 1); // Remove o nome do array
+    atualizarLista(); // Atualiza a lista exibida na tela
+}
+
+// Inicializa a lista de amigos na primeira vez que a página carrega
+atualizarLista();
