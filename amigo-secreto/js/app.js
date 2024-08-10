@@ -1,9 +1,7 @@
 //recuperar nomes digitados e armazenar
-let nomesAdicionados = ['ivan','kito','iris','jana'];
-nomesAdicionados.join(', ');
+let nomesAdicionados = ['a', 'b', 'c', 'd'];
+// nomesAdicionados.join(', ');
 let nomesSorteados = document.getElementById('lista-sorteio');
-let listaSorteados = nomesAdicionados;
-
 
 function adicionar(){
 
@@ -15,23 +13,26 @@ function adicionar(){
     nomeDigitado.value = '';
 }
 
-
 //sortear nomes para cada pessoa digitados alearóriamente
 
-
 function sortear() {
-    listaSorteados;
+    let listaSorteados = [...nomesAdicionados] //array agora está clonada corretamente
+
     embaralha(listaSorteados);
     for (let i = 0; i < nomesAdicionados.length; i ++){
-        while(i < nomesAdicionados.length){
-        nomesSorteados.innerHTML = nomesSorteados.innerHTML + `<p id="lista-sorteio">${nomesAdicionados[i]}, tirou ${listaSorteados[i]}</p>`
+        let nomeFinal = listaSorteados[i];
+        if(nomesAdicionados[i] == nomeFinal){
+            embaralha(nomeFinal);
+        }
+        nomesSorteados.innerHTML = nomesSorteados.innerHTML + `<p id="lista-sorteio">${nomesAdicionados[i]}, tirou ${nomeFinal}</p>`
         console.log(listaSorteados);
-            break;
+        // while(i < nomesAdicionados.length){
+        // if(nomesAdicionados[i] == listaSorteados[i]){
+        //     embaralha(listaSorteados)
+        // }
     }
     }
 
-
-}
 
 function embaralha(lista) {
 
@@ -46,5 +47,10 @@ function embaralha(lista) {
 
 //reiniciar tudo quando o botão for clicado
 function reiniciar(){
+    // nomesAdicionados = [];
+    listaSorteados = [...nomesAdicionados];
+    nomeDigitado = '';
+    document.getElementById('lista-amigos').textContent = ''
+    nomesSorteados.textContent = ''
 
 }
