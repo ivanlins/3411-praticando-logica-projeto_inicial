@@ -6,11 +6,26 @@ let nomesSorteados = document.getElementById('lista-sorteio');
 
 // Função para adicionar um novo nome à lista
 function adicionar() {
+
     // Obtém o valor digitado no campo de texto com o id 'nome-amigo'
     let nomeDigitado = document.getElementById('nome-amigo');
+    // Verifica se o valor digitado no campo de entrada está vazio
+    if (nomeDigitado.value == '') {
+        // Exibe um alerta se o campo estiver vazio
+        alert('Informe um nome válido');
+        // Interrompe a execução da função se o campo estiver vazio
+        return;
+    }
 
+    // Verifica se o nome digitado já foi adicionado à lista de nomes
+    if (nomesAdicionados.includes(nomeDigitado.value.toUpperCase())) {
+        // Exibe um alerta se o nome já estiver na lista
+        alert(`O nome "${nomeDigitado.value}" já foi adicionado, tente outro nome`);
+        // Interrompe a execução da função se o nome já estiver na lista
+        return;
+    }
     // Adiciona o valor digitado ao array 'nomesAdicionados'
-    nomesAdicionados.push(nomeDigitado.value);
+    nomesAdicionados.push(nomeDigitado.value.toUpperCase());
 
     // Exibe o array atualizado no console para verificação
     console.log(nomesAdicionados);
@@ -27,17 +42,17 @@ function adicionar() {
 // Função para sortear nomes aleatoriamente, garantindo que ninguém tire a si mesmo
 function sortear() {
 
-    if (nomesAdicionados.length < 2){
-        alert('O numero minimo para o sorteio é de: 2');
-        return
+    if (nomesAdicionados.length < 4) {
+        alert(`O numero minimo para o sorteio é de: 4 amigos`);
+        return;
     }
     // Cria uma cópia do array original 'nomesAdicionados' para 'listaSorteados'
     // Isso é feito para evitar alterações no array original
-    let listaSorteados = [...nomesAdicionados]; 
+    let listaSorteados = [...nomesAdicionados];
 
     // Cria um conjunto (Set) para rastrear os nomes que já foram sorteados
     // O Set é útil aqui porque ele só permite valores únicos, evitando duplicatas
-    let nomesJaSorteados = new Set(); 
+    let nomesJaSorteados = new Set();
 
     // Chama a função 'embaralha' para embaralhar o array 'listaSorteados'
     // Isso ajuda a distribuir os nomes de forma aleatória
@@ -75,7 +90,7 @@ function embaralha(lista) {
         const indiceAleatorio = Math.floor(Math.random() * indice);
 
         // Troca o elemento atual com o elemento aleatório
-        [lista[indice - 1], lista[indiceAleatorio]] = 
+        [lista[indice - 1], lista[indiceAleatorio]] =
             [lista[indiceAleatorio], lista[indice - 1]];
     }
 }
